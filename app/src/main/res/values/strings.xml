@@ -2,6 +2,28 @@
     <string name="app_name">Bootcampgroupc</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="stay_high">Stay High.</string>
+    <string name="stay_happy">Stay Happy.</string>
+    <string name="always">Always.</string>
+    <string name="join">Join</string>
+    <string name="log_in">Log In</string>
+    <string name="continue_with_google">Continue with google</string>
+    <string name="edit_profile">EDIT PROFILE</string>
+    <string name="address">Address:</string>
+    <string name="e_mail">E-mail:</string>
+    <string name="phone">Phone:</string>
+    <string name="name_tit">Name:</string>
+    <string name="fullname">Fullname</string>
+    <string name="update_your_profile">Update Your Profile</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="e_mail_2">E-mail</string>
+    <string name="address_2">Address</string>
+    <string name="save">SAVE</string>
+    <string name="cancel">CANCEL</string>
+    <string name="upload_p_cture">Upload Pıcture</string>
+    <string name="blank" />
+    <string name="default_web" translatable="false">1093143162319-vr6cgmv68fbf1ohkef5anmvplss34bke.apps.googleusercontent.com</string>
+
     <string name="title_activity_login">LoginActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
