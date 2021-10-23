@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Bootcampgroupc</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="stay_high">Stay High.</string>
     <string name="stay_happy">Stay Happy.</string>
     <string name="always">Always.</string>
@@ -23,5 +24,34 @@
     <string name="blank" />
     <string name="default_web" translatable="false">1093143162319-vr6cgmv68fbf1ohkef5anmvplss34bke.apps.googleusercontent.com</string>
 
+    <string name="title_activity_login">LoginActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <!-- Strings used for fragments for login -->
+    <string name="login">Login</string>
+    <string name="create_your_account">Create your account</string>
+    <string name="terms">By creating an account you agree with our<a href="https://bootcamp-group-c.flycricket.io/privacy.html">
+        terms and conditions</a></string>
+    <string name="login_btn">Login</string>
+
+    <string name="grower_name">Grower Name</string>
+    <string name="field_is_required"> This field is required</string>
+    <string name="field_is_too_short"> Text length is too short</string>
+    <string name="description">Description</string>
+    <string name="price_gram">Price / Gram</string>
+    <string name="thc_rate">THC rate</string>
+    <string name="cbd_rate">CBD rate</string>
+    <string name="add">Add</string>
+
+    <string-array name="Categories">
+        <item>Flowers</item>
+        <item>Vapes</item>
+        <item>Extracts</item>
+        <item>Edibles</item>
+        <item>Accessories</item>
+    </string-array>
 
 </resources>

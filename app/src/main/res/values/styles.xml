@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <style name="create_your_account">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">#1E0702</item>
+        <item name="fontFamily">@font/gilroy_light_font_family</item>
+    </style>
+
+    <style name="button">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="fontFamily">@font/gilroy_bold_font_family</item>
+    </style>
+
+    <style name="terms">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/theme_grey</item>
+        <item name="fontFamily">@font/gilroy_light_font_family</item>
+    </style>
+
+</resources>

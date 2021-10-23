@@ -9,7 +9,7 @@
         android:contentDescription="Favorilere ekler"/>
 
     <item
-        android:id="@+id/blankFragment2"
+        android:id="@+id/detailFragment"
         android:icon="@drawable/ic_shape"
         app:showAsAction="ifRoom"
         android:title="TODO" />
