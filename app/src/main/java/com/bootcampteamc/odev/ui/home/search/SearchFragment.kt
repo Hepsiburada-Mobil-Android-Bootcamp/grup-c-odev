@@ -16,7 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 
 
-class SearchFragment(override val viewModel: BaseViewModel) : BaseFragment() {
+class SearchFragment() : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!

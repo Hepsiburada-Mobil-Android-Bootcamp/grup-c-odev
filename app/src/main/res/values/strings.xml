@@ -45,6 +45,11 @@
     <string name="thc_rate">THC rate</string>
     <string name="cbd_rate">CBD rate</string>
     <string name="add">Add</string>
+    <string name="flowers">Flowers</string>
+    <string name="vapes">Vapes</string>
+    <string name="extracts">Extracts</string>
+    <string name="edibles">Edibles</string>
+    <string name="accessories">Accessories</string>
 
     <string-array name="Categories">
         <item>Flowers</item>
