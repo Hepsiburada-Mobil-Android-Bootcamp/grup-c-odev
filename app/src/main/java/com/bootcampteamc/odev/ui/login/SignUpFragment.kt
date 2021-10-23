@@ -1,5 +1,6 @@
 package com.bootcampteamc.odev.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
@@ -11,6 +12,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.bootcampteamc.odev.MainActivity
 import com.bootcampteamc.odev.R
 import com.bootcampteamc.odev.databinding.FragmentSignUpBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -42,7 +45,7 @@ class SignUpFragment : Fragment() {
         val spannableString = SpannableString(str) //adding clickable textview
         val clickableSpanLogin: ClickableSpan = object : ClickableSpan() { //adding onClick function to textview
             override fun onClick(p0: View) {
-                openFragment(signInFragment)
+                findNavController().navigate(R.id.signInFragment)
             }
         }
         spannableString.setSpan(clickableSpanLogin, 18, 24, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE) //defining the clickable word of the textview
@@ -74,9 +77,9 @@ class SignUpFragment : Fragment() {
                                     if (task.isSuccessful) { //sign up succesful
                                         Toast.makeText(activity, "Welcome to Spliff", Toast.LENGTH_LONG)
                                             .show()
-                                        /*  val intent = Intent(activity, MainActivity::class.java)
+                                          val intent = Intent(activity, MainActivity::class.java)
                                           startActivity(intent)
-                                          activity?.finish()*/
+                                          activity?.finish()
                                     }
                                 }.addOnFailureListener { exception -> //sign up failed
                                     Toast.makeText(
@@ -116,9 +119,5 @@ class SignUpFragment : Fragment() {
         } ?: return false
     }
 
-    private fun openFragment(fragment: Fragment) { //function for changing fragments
-        val manager = activity?.supportFragmentManager?.beginTransaction()
-        manager?.replace(R.id.frame_layout, fragment)
-        manager?.commitAllowingStateLoss()
-    }
+
 }

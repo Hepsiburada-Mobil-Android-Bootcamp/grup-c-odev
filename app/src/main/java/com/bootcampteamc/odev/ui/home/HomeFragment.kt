@@ -18,9 +18,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
-
-
     private lateinit var viewPager: ViewPager2
     private var categories = arrayListOf<String>()
     private lateinit var tabLayout: TabLayout
@@ -32,7 +29,7 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         viewPager = binding.vpCategories
-        tabLayout = binding.tabLayout as TabLayout
+        tabLayout = binding.tabLayout
         loadCategories()
         setUpViewPagerWithTabLayout()
         addTabLayoutMediator()

@@ -1,11 +1,13 @@
 package com.bootcampteamc.odev.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.bootcampteamc.odev.MainActivity
 import com.bootcampteamc.odev.databinding.FragmentSignInBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -54,9 +56,9 @@ class SignInFragment : Fragment() {
                             "Welcome: ${auth.currentUser?.email.toString()}",
                             Toast.LENGTH_LONG
                         ).show()
-                        /* val intent = Intent(activity, MainActivity::class.java)
+                         val intent = Intent(activity, MainActivity::class.java)
                          startActivity(intent)
-                         activity?.finish()*/
+                         activity?.finish()
                     }
                 }.addOnFailureListener { exception ->
                     Toast.makeText(

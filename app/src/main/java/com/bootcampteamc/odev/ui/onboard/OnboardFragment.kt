@@ -1,6 +1,7 @@
 package com.bootcampteamc.odev.ui.onboard
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
@@ -12,6 +13,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.navigation.fragment.findNavController
+import com.bootcampteamc.odev.MainActivity
 import com.bootcampteamc.odev.R
 import com.bootcampteamc.odev.databinding.FragmentOnboardBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -56,7 +59,8 @@ class OnboardFragment : Fragment() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         // start function
-        checkUser()
+        //checkUser()
+        checkShared()
 
         // result launcher for google sign in
         val resultLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
@@ -82,22 +86,34 @@ class OnboardFragment : Fragment() {
 
 
         //login and sign in buttons
-        /*
-        binding.bLogin.setOnClickListener {
 
+        binding.bLogin.setOnClickListener {
+            val action = OnboardFragmentDirections.actionOnboardFragmentToSignInFragment()
+            findNavController().navigate(action)
+            onBoardingFinished()
         }
 
         binding.bJoin.setOnClickListener {
+            val action = OnboardFragmentDirections.actionOnboardFragmentToSignUpFragment()
+            onBoardingFinished()
+            findNavController().navigate(action)
 
         }
-*/
+
         return binding.root
     }
     // check if user already signed in with google
     private fun checkUser() {
         val firebaseUser = firebaseAuth.currentUser
         if(firebaseUser != null) {
-         //   findNavController().navigate(R.id.profilePageFragment)
+           val intent = Intent(requireContext(),MainActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun checkShared() {
+        if(isOnboardingFinished()) {
+           findNavController().navigate(R.id.signUpFragment)
         }
     }
 
@@ -121,12 +137,14 @@ class OnboardFragment : Fragment() {
                     // new user
                     Log.d(TAG, "firebaseAuthWithGoogleAccount: Account created... \n$email")
                     Toast.makeText(context, "Account created... \n$email", Toast.LENGTH_SHORT).show()
-                 //   findNavController().navigate(R.id.profilePageFragment)
+                    val intent = Intent(requireContext(),MainActivity::class.java)
+                    startActivity(intent)
                 } else {
                     // existing user
                     Log.d(TAG, "firebaseAuthWithGoogleAccount: Existing user... \n$email")
                     Toast.makeText(context, "LoggedIn... \n$email", Toast.LENGTH_SHORT).show()
-                  //  findNavController().navigate(R.id.profilePageFragment)
+                    val intent = Intent(requireContext(),MainActivity::class.java)
+                    startActivity(intent)
                 }
             }
             .addOnFailureListener { e ->
@@ -134,5 +152,20 @@ class OnboardFragment : Fragment() {
                 Log.d(TAG, "firebaseAuthWithGoogleAccount: Login Failed due to ${e.message}")
                 Toast.makeText(context, "Login Failed due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+
+    private fun onBoardingFinished() {
+        val sharedPref = requireActivity().getSharedPreferences("onboarding", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putBoolean("finished", true)
+        editor.apply()
+    }
+
+
+    private fun isOnboardingFinished(): Boolean {
+        //To set up a shared preferences structure and check for Onboarding to show once after running
+        val sharedPref = requireActivity().getSharedPreferences("onboarding", Context.MODE_PRIVATE)
+        return sharedPref.getBoolean("finished", false)
     }
 }

@@ -19,17 +19,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
-        setSupportActionBar(toolbar)
+       // setSupportActionBar(toolbar)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
         val navController = navHostFragment.navController
         appBarConfiguration = AppBarConfiguration(navController.graph,drawerLayout)
         val navView = findViewById<NavigationView>(R.id.nav_view)
-        NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout)
-        NavigationUI.setupWithNavController(navView,navController)
-        toolbar.setupWithNavController(navController,appBarConfiguration)
+       // NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout)
+        //NavigationUI.setupWithNavController(navView,navController)
+        //toolbar.setupWithNavController(navController,appBarConfiguration)
     }
-
+/*
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu,menu)
         return true
@@ -43,5 +43,5 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return NavigationUI.navigateUp(navController,drawerLayout)
-    }
+    }*/
 }
