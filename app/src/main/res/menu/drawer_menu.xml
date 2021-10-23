@@ -8,9 +8,9 @@
             android:id="@+id/homeFragment"
             android:title="home" />
         <!--android:icon="@drawable/home" -->
-
-
-
-
+        <item
+            android:id="@+id/detailFragment"
+            android:icon="@drawable/ic_shape"
+            android:title="TODO" />
     </group>
 </menu>
