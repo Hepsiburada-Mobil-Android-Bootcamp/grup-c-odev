@@ -9,6 +9,7 @@ import com.bootcampteamc.odev.R
 
 import androidx.lifecycle.ViewModelProvider
 import android.view.*
+import androidx.lifecycle.Observer
 import com.bootcampteamc.odev.data.Product
 import com.bootcampteamc.odev.databinding.FragmentDetailBinding
 import com.google.firebase.firestore.FirebaseFirestore
@@ -39,16 +40,16 @@ class DetailFragment : Fragment() {
         val viewModelFactory = DetailViewModelFactory(productId)
         binding.viewModel = ViewModelProvider(this,viewModelFactory).get(DetailViewModel::class.java)
 
-//        viewModel.product.observe(viewLifecycleOwner, Observer {
-//            if(null != it){
-//                binding.textViewGrower.text = it.grower
-//                binding.textViewName.text = it.name
-//                //binding.textViewDescription.text = it.description
-//                binding.textViewCbd.text = it.cbdPercantage.toString() +"%"
-//                binding.textViewThc.text = it.thcPercentage.toString() + "%"
-//                binding.textViewPrice.text = it.price.toString()
-//            }
-//        })
+      viewModel.product.observe(viewLifecycleOwner, Observer {
+           if(null != it){
+                binding.textViewGrower.text = it.grower
+               binding.textViewName.text = it.name
+               binding.textViewDescription.text = it.description
+               binding.textViewCbd.text = it.cbdPercantage.toString() +"%"
+               binding.textViewThc.text = it.thcPercentage.toString() + "%"
+               binding.textViewPrice.text = it.price.toString()
+           }
+       })
         return  binding.root
     }
 

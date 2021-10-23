@@ -7,10 +7,7 @@
             name="viewModel"
             type="com.bootcampteamc.odev.ui.detail.DetailViewModel" />
     </data>
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -19,7 +16,9 @@
             android:background="#F9F9F9"
             >
 
+
             <ImageView
+                android:layout_marginTop="@dimen/_20sdp"
                 android:id="@+id/image_view"
                 android:layout_width="291dp"
                 android:layout_height="252dp"
@@ -199,7 +198,7 @@
             </LinearLayout>
         </RelativeLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+
 
 
 

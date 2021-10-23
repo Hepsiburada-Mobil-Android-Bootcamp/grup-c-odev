@@ -24,7 +24,7 @@ class CategoryListFragment(private val category: String) : BaseFragment() {
         CategoryListViewModelFactory()
     }
 
-    private val db: FirebaseFirestore by lazy { FirebaseFirestore.getInstance() }
+    private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
     private lateinit var adapter: ProductAdapter
 
 
