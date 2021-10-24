@@ -14,15 +14,21 @@ import java.lang.Exception
 class DetailViewModel(productId : String) : ViewModel() {
     private var _productId : String ?= null
 
-    private var _product = MutableLiveData<Product>()
+     var totalPrice = MutableLiveData<String>()
+
+    private val _product = MutableLiveData<Product>()
     val product : LiveData<Product>
         get() {
             return _product
         }
+    private val _productCount = MutableLiveData<Int>()
 
+    val productCount :LiveData<Int>
+        get() = _productCount
 
     init {
         _productId = productId
+        _productCount.value = 0
         getProduct()
 
     }
@@ -37,4 +43,19 @@ class DetailViewModel(productId : String) : ViewModel() {
             }
         }
     }
+    fun TotalPriceGet(){
+        totalPrice.value = productCount.value?.times(product.value?.price!!).toString()
+    }
+    fun addProduct(){
+        _productCount.value = _productCount.value?.plus(1)
+        TotalPriceGet()
+    }
+    fun deleteProduct(){
+        if(_productCount.value == 0){
+            return
+        }
+        _productCount.value = _productCount.value?.minus(1)
+        TotalPriceGet()
+    }
+
 }

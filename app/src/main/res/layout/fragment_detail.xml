@@ -47,56 +47,61 @@
                 android:textColor="#81AA66"
                 android:textSize="24dp"
                 android:textFontWeight="700"/>
+
             <LinearLayout
+                android:id="@+id/layout_substances"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/layout_substances"
-                android:layout_below="@id/text_view_name">
+                android:layout_below="@id/text_view_name"
+                android:orientation="horizontal">
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/label_thc"
-                    android:text="THC"
-                    android:fontFamily="@font/gilroy"
-                    android:textFontWeight="700"
-                    android:textSize="14dp"
-                    android:textColor="#000000"
-                    android:layout_marginRight="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="31dp"
-                    android:layout_marginTop="7dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/text_view_thc"
-                    android:text=""
                     android:layout_marginTop="7dp"
-                    android:textSize="14dp"
-                    android:textFontWeight="400"
-                    android:textColor="@color/black"
+                    android:layout_marginRight="8dp"
                     android:fontFamily="@font/gilroy"
-                    android:layout_marginRight="26dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/label_cbd"
-                    android:text=""
-                    android:fontFamily="@font/gilroy"
-                    android:textSize="14dp"
+                    android:text="THC"
+                    android:textColor="#000000"
                     android:textFontWeight="700"
-                    android:layout_marginTop="7dp"
-                    android:textColor="@color/black"/>
+                    android:textSize="14dp" />
+
                 <TextView
+                    android:id="@+id/text_view_thc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/text_view_cbd"
-                    android:text=""
-                    android:fontFamily="@font/gilroy"
-                    android:textSize="14dp"
-                    android:textFontWeight="400"
                     android:layout_marginTop="7dp"
+                    android:layout_marginRight="26dp"
+                    android:fontFamily="@font/gilroy"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:layout_marginLeft="8dp"/>
+                    android:textFontWeight="400"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/label_cbd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="@font/gilroy"
+                    android:text="CBD"
+                    android:textColor="@color/black"
+                    android:textFontWeight="700"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/text_view_cbd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="@font/gilroy"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textFontWeight="400"
+                    android:textSize="14dp" />
             </LinearLayout>
             <TextView
                 android:layout_width="319dp"
@@ -122,12 +127,13 @@
                     android:layout_height="30dp"
                     android:src="@drawable/ic_plus_icon"
                     android:layout_marginLeft="31dp"
-                    android:layout_marginRight="18dp"/>
+                    android:layout_marginRight="18dp"
+                    android:id="@+id/addProduct"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="01"
+                    android:text="@{viewModel.productCount.toString()}"
                     android:id="@+id/text_view_count"
                     android:fontFamily="@font/gilroy"
                     android:textFontWeight="700"
@@ -140,16 +146,19 @@
                     android:layout_height="30dp"
                     android:src="@drawable/ic_minus_icon"
                     android:layout_marginLeft="18dp"
-                    android:layout_marginRight="130dp"/>
+                    android:layout_marginRight="130dp"
+                    android:id="@+id/removeProduct"/>
+
                 <TextView
+                    android:id="@+id/text_view_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$20"
-                    android:textColor="#81AA66"
-                    android:textSize="24sp"
-                    android:textFontWeight="700"
+                    android:layout_marginRight="4dp"
                     android:fontFamily="@font/gilroy"
-                    android:layout_marginRight="4dp"/>
+                    android:text=""
+                    android:textColor="#81AA66"
+                    android:textFontWeight="700"
+                    android:textSize="24sp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -177,8 +186,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/text_view_price"
-                    android:text=""
+                    android:id="@+id/text_view_total_price"
+                    android:text="@{viewModel.totalPrice.toString()}"
                     android:fontFamily="@font/gilroy"
                     android:textFontWeight="700"
                     android:textSize="24dp"
@@ -191,6 +200,7 @@
                     android:layout_marginRight="31dp"
                     android:backgroundTint="#81AA66"
                     android:textSize="18dp"
+                    android:id="@+id/add_to_bag"
                     android:layout_weight="700"
                     android:fontFamily="@font/gilroy"/>
 

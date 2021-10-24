@@ -9,6 +9,7 @@ import com.bootcampteamc.odev.R
 
 import androidx.lifecycle.ViewModelProvider
 import android.view.*
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.bootcampteamc.odev.data.Product
@@ -33,7 +34,7 @@ class DetailFragment : Fragment() {
         var products : Product
         var productss : List<Product>
         val binding = FragmentDetailBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         val documentId = args.documentId
 
         val viewModelFactory = DetailViewModelFactory(documentId)
@@ -41,14 +42,26 @@ class DetailFragment : Fragment() {
 
       viewModel.product.observe(viewLifecycleOwner, Observer {
            if(null != it){
-                binding.textViewGrower.text = it.grower
-               binding.textViewName.text = it.name
-               binding.textViewDescription.text = it.description
-               binding.textViewCbd.text = it.cbdPercantage.toString() +"%"
-               binding.textViewThc.text = it.thcPercentage.toString() + "%"
-               binding.textViewPrice.text = it.price.toString()
+               binding.apply {
+                   textViewGrower.text = it.grower
+                   textViewName.text = it.name
+                   textViewDescription.text = it.description
+                   textViewCbd.text = it.cbdPercantage.toString() +"%"
+                   textViewThc.text = it.thcPercentage.toString() + "%"
+                   textViewPrice.text = "$"+ it.price.toString()
+               }
+
            }
        })
+        binding.addProduct.setOnClickListener {
+            viewModel.addProduct()
+        }
+        binding.removeProduct.setOnClickListener {
+            viewModel.deleteProduct()
+        }
+        binding.addToBag.setOnClickListener{
+            Toast.makeText(requireContext(),"Products have been added to the bag. Happy Spliffing!",Toast.LENGTH_SHORT).show()
+        }
         return  binding.root
     }
 
