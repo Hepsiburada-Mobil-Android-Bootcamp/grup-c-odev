@@ -36,16 +36,9 @@ class HomeFragment : Fragment() {
         setUpViewPagerWithTabLayout()
         addTabLayoutMediator()
         onClickAdd()
-        onClickSearch()
         return binding.root
     }
 
-    private fun onClickSearch() {
-        binding.searchButton.setOnClickListener {
-            val search = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
-            findNavController().navigate(search)
-        }
-    }
 
     private fun onClickAdd() {
         //create bottom sheet add fragment when add button clicked on homepage

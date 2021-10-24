@@ -35,6 +35,8 @@ class OnboardFragment : Fragment() {
         private const val TAG = "GOOGLE_SIGN_IN_TAG"
     }
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,8 +61,8 @@ class OnboardFragment : Fragment() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         // start function
-        //checkUser()
-        checkShared()
+
+        checkUser()
 
         // result launcher for google sign in
         val resultLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
@@ -105,18 +107,15 @@ class OnboardFragment : Fragment() {
     // check if user already signed in with google
     private fun checkUser() {
         val firebaseUser = firebaseAuth.currentUser
-        if(firebaseUser != null) {
+        if(firebaseUser != null && isOnboardingFinished()) {
            val intent = Intent(requireContext(),MainActivity::class.java)
             startActivity(intent)
+            requireActivity().finish()
+        }
+        else if(isOnboardingFinished()){
+            findNavController().navigate(R.id.signUpFragment)
         }
     }
-
-    private fun checkShared() {
-        if(isOnboardingFinished()) {
-           findNavController().navigate(R.id.signUpFragment)
-        }
-    }
-
 
     // google sign with firebase
     private fun firebaseAuthWithGoogleAccount(account: GoogleSignInAccount?) {
@@ -166,6 +165,7 @@ class OnboardFragment : Fragment() {
     private fun isOnboardingFinished(): Boolean {
         //To set up a shared preferences structure and check for Onboarding to show once after running
         val sharedPref = requireActivity().getSharedPreferences("onboarding", Context.MODE_PRIVATE)
-        return sharedPref.getBoolean("finished", false)
+        val tmp = sharedPref.getBoolean("finished", false)
+        return tmp
     }
 }

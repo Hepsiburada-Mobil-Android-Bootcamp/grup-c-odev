@@ -88,5 +88,4 @@ dependencies {
     implementation "io.grpc:grpc-okhttp:1.32.2"
     //coordinatorLayout
     implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
-
 }

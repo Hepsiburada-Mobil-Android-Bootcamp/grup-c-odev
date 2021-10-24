@@ -1,13 +1,18 @@
 package com.bootcampteamc.odev
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
+import com.bootcampteamc.FireService
+import com.bootcampteamc.odev.ui.login.LoginActivity
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.navigation.NavigationView
 
@@ -19,15 +24,36 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+
         setSupportActionBar(toolbar)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
         val navController = navHostFragment.navController
         appBarConfiguration = AppBarConfiguration(navController.graph,drawerLayout)
         val navView = findViewById<NavigationView>(R.id.nav_view)
+        val header = navView.getHeaderView(0)
+        val navHeaderTextView = header.findViewById<TextView>(R.id.textview_email)
         NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout)
         NavigationUI.setupWithNavController(navView,navController)
         toolbar.setupWithNavController(navController,appBarConfiguration)
+        navHeaderTextView.text = FireService.getUserEmail()
+        navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.logOut -> {
+                    FireService.logOut()
+                    startActivity(Intent(this,LoginActivity::class.java))
+                    this.finish()
+                    true
+                }
+                R.id.profilePageFragment ->{
+                    drawerLayout.closeDrawers()
+                    navController.navigate(R.id.profilePageFragment)
+                    true
+                }
+                else -> false
+            }
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -37,7 +63,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+        if(item.itemId == R.id.logOut){
+            Log.d("test","test")
+            return true
+        }
+        else{
+            return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+        }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

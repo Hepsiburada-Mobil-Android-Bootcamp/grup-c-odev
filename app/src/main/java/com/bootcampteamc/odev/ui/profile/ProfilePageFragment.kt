@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.bootcampteamc.odev.databinding.FragmentProfilePageBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -26,7 +27,7 @@ class ProfilePageFragment : Fragment() {
 
         // to edit profile page
         binding.editButton.setOnClickListener {
-        //    findNavController().navigate(R.id.action_profilePageFragment_to_profileEditFragment)
+           findNavController().navigate(ProfilePageFragmentDirections.actionProfilePageFragmentToProfileEditFragment())
         }
 
         // Loading data

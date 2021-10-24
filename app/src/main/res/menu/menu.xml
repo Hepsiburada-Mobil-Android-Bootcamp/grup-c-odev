@@ -2,15 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/blankFragment"
-        android:icon="@drawable/ic_baseline_favorite_border_24"
-        app:showAsAction="always"
-        android:title="TODO"
-        android:contentDescription="Favorilere ekler"/>
-
-    <item
-        android:id="@+id/detailFragment"
-        android:icon="@drawable/ic_shape"
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/ic_search"
         app:showAsAction="ifRoom"
-        android:title="TODO" />
+        android:title="Search" />
 </menu>

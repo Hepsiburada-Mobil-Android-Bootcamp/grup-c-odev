@@ -5,12 +5,15 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/homeFragment"
-            android:title="home" />
-        <!--android:icon="@drawable/home" -->
+            android:id="@+id/profilePageFragment"
+            android:title="Profile"
+            android:icon="@drawable/user"/>
+
         <item
-            android:id="@+id/detailFragment"
-            android:icon="@drawable/ic_shape"
-            android:title="TODO" />
+            android:id="@+id/logOut"
+            android:icon="@drawable/logout"
+            android:title="Log Out" />
+
+
     </group>
 </menu>

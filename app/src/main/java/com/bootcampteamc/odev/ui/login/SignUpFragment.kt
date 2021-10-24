@@ -112,7 +112,7 @@ class SignUpFragment : Fragment() {
 
     fun isPasswordValid(password: String?): Boolean {
         password?.let {
-            val regexPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+*=_-])" //creating regex for password syntax
+            val regexPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+*=_-])" //creating regex for password syntax
             val matcher = Regex(regexPattern)
 
             return matcher.find(password) != null //checking password syntax with the created regex

@@ -10,6 +10,7 @@ import com.bootcampteamc.odev.R
 import androidx.lifecycle.ViewModelProvider
 import android.view.*
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import com.bootcampteamc.odev.data.Product
 import com.bootcampteamc.odev.databinding.FragmentDetailBinding
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class DetailFragment : Fragment() {
 
     private var product: Product? = null
+    val args: DetailFragmentArgs by navArgs()
     private val viewModel: DetailViewModel by lazy {
         ViewModelProvider(this).get(DetailViewModel::class.java)
     }
@@ -31,13 +33,10 @@ class DetailFragment : Fragment() {
         var products : Product
         var productss : List<Product>
         val binding = FragmentDetailBinding.inflate(inflater)
-       // binding.lifecycleOwner = this
-        //val productId = DetailFragmentArgs.fromBundle(requireArguments()).productId
-        val db = FirebaseFirestore.getInstance()
-        val productId = "4fe289eb-6d86-4b06-8a1e-47e354be311a"
+        binding.lifecycleOwner = this
+        val documentId = args.documentId
 
-
-        val viewModelFactory = DetailViewModelFactory(productId)
+        val viewModelFactory = DetailViewModelFactory(documentId)
         binding.viewModel = ViewModelProvider(this,viewModelFactory).get(DetailViewModel::class.java)
 
       viewModel.product.observe(viewLifecycleOwner, Observer {

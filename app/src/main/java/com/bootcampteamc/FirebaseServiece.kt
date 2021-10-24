@@ -5,6 +5,7 @@ import android.os.ProxyFileDescriptorCallback
 import android.util.Log
 import com.bootcampteamc.odev.data.Product
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.coroutines.flow.callbackFlow
@@ -25,5 +26,11 @@ object FireService{
             null
         }
 
+    }
+    fun logOut(){
+        FirebaseAuth.getInstance().signOut()
+    }
+    fun getUserEmail() : String {
+        return FirebaseAuth.getInstance().currentUser?.email.toString()
     }
 }
