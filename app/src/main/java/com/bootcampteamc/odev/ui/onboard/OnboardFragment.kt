@@ -126,12 +126,16 @@ class OnboardFragment : Fragment() {
                     Toast.makeText(context, "Account created... \n$email", Toast.LENGTH_SHORT).show()
                     val intent = Intent(requireContext(),MainActivity::class.java)
                     startActivity(intent)
+                    onBoardingFinished()
+                    activity?.finish()
                 } else {
                     // existing user
                     Log.d(TAG, "firebaseAuthWithGoogleAccount: Existing user... \n$email")
                     Toast.makeText(context, "LoggedIn... \n$email", Toast.LENGTH_SHORT).show()
                     val intent = Intent(requireContext(),MainActivity::class.java)
                     startActivity(intent)
+                    onBoardingFinished()
+                    activity?.finish()
                 }
             }
             .addOnFailureListener { e ->
