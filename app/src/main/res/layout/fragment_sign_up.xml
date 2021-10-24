@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.bootcampteamc.odev.ui.login.SignViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,22 +26,33 @@
             app:layout_constraintTop_toBottomOf="@+id/buttonSignUp"
             app:layout_constraintVertical_bias="0.289" />
 
-        <EditText
-            android:id="@+id/editTextEmail"
-            android:layout_width="314dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="38dp"
-            android:background="@drawable/border_edit_text"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:paddingLeft="14dp"
-            android:paddingRight="10dp"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutEmail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            android:layout_width="318dp"
+            android:layout_height="wrap_content"
+            app:errorEnabled="true"
             app:layout_constraintHorizontal_bias="0.546"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:error="@{viewModel.emailErrorMessage}">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="314dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="38dp"
+                android:background="@drawable/border_edit_text"
+                android:ems="10"
+                android:text="@={viewModel.email}"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="14dp"
+                android:paddingRight="10dp"
+                android:textSize="17sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
             android:id="@+id/imageView"
@@ -87,7 +104,7 @@
             android:foregroundGravity="center"
             android:gravity="center"
             android:text="@string/create_your_account"
-            app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayoutEmail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +117,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/rounded_button"
-            android:onClick="signUpClick"
+            android:onClick="@{() -> viewModel.signUpClicked()}"
             android:text="Create an account"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -119,7 +136,7 @@
             app:boxBackgroundColor="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail"
             app:passwordToggleEnabled="true"
             app:errorEnabled="true">
 
