@@ -3,20 +3,29 @@ package com.bootcampteamc.odev.ui.home.search
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.bootcampteamc.odev.R
 import com.bootcampteamc.odev.databinding.FragmentSearchBinding
 import com.bootcampteamc.odev.infra.BaseFragment
 import com.bootcampteamc.odev.infra.BaseViewModel
+import com.bootcampteamc.odev.ui.home.HomeFragmentDirections
 import com.bootcampteamc.odev.ui.home.adapter.SearchProductAdapter
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 
 
 class SearchFragment() : Fragment() {
+
+    var itemClickListener: (String) -> Unit = {
+        val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(it)
+        Log.e("onClick","Item")
+        findNavController().navigate(action)
+    }
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
@@ -56,10 +65,12 @@ class SearchFragment() : Fragment() {
     private fun setupRecyclerView(){
         val query : Query = db.collection("test").orderBy("name")
         adapter=SearchProductAdapter(query)
+        adapter.itemClickListener = itemClickListener
     }
     private fun loadFirebaseData(searchText : String) {
         val firebaseSearchQuery = db.collection("test").orderBy("name").startAt(searchText).endAt(searchText + "\uf8ff")
         adapter= SearchProductAdapter(firebaseSearchQuery)
+        adapter.itemClickListener = itemClickListener
         binding.rvSearch.adapter=adapter
 
     }
