@@ -36,6 +36,15 @@
     <string name="terms">By creating an account you agree with our<a href="https://bootcamp-group-c.flycricket.io/privacy.html">
         terms and conditions</a></string>
     <string name="login_btn">Login</string>
+    <string name="not_valid_email">Email is invalid</string>
+    <string name="uppercase">Password must include at least one capital letter</string>
+    <string name="lowercase">Password must include at least one small letter</string>
+    <string name="number">Password must include at least one number</string>
+    <string name="special">Password must include at least one special character</string>
+    <string name="password_too_short">Password is too short</string>
+    <string name="password_too_long">Password is too long</string>
+    <string name="password_is_required">Password is required</string>
+    <string name="email_is_required">Email is required</string>
 
     <string name="grower_name">Grower Name</string>
     <string name="field_is_required"> This field is required</string>
@@ -50,13 +59,7 @@
     <string name="extracts">Extracts</string>
     <string name="edibles">Edibles</string>
     <string name="accessories">Accessories</string>
-    <string name="not_valid_email">not valid</string>
-    <string name="capital_letter">Password must include at least one capital letter</string>
-    <string name="small_letter">Password must include at least one small letter</string>
-    <string name="number">Password must include at least one number</string>
-    <string name="special">Password must include at least one special character</string>
-    <string name="password_too_short">Password is too short</string>
-    <string name="password_is_required">Password is required</string>
+
 
     <string-array name="Categories">
         <item>Flowers</item>
@@ -65,7 +68,5 @@
         <item>Edibles</item>
         <item>Accessories</item>
     </string-array>
-
-
 
 </resources>
