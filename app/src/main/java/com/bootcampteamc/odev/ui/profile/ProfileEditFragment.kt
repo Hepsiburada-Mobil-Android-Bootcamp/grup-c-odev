@@ -47,7 +47,7 @@ class ProfileEditFragment : Fragment() {
         }
         // Cancel editing profile
         binding.cancelButton.setOnClickListener {
-            findNavController().navigate(R.id.profilePageFragment)
+            findNavController().navigate(ProfileEditFragmentDirections.actionProfileEditFragmentToProfilePageFragment())
         }
 
         return binding.root

@@ -34,9 +34,6 @@ class ProfilePageViewModel : ViewModel() {
         if (firebaseUser != null) {
             val email = firebaseUser.email
             _email.value = email!!
-
-            val name = firebaseUser.displayName
-            _name.value = name!!
         }
     }
 

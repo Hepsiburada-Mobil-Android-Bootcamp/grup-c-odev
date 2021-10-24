@@ -43,10 +43,19 @@
         android:label="Profile" >
         <action
             android:id="@+id/action_profilePageFragment_to_profileEditFragment"
-            app:destination="@id/profileEditFragment" />
+            app:destination="@id/profileEditFragment"
+            app:popUpTo="@id/profilePageFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/profileEditFragment"
         android:name="com.bootcampteamc.odev.ui.profile.ProfileEditFragment"
-        android:label="Edit Profile" />
+        android:label="Edit Profile" >
+        <action
+            android:id="@+id/action_profileEditFragment_to_profilePageFragment"
+            app:destination="@id/profilePageFragment"
+            app:popUpTo="@id/profileEditFragment"
+            app:popUpToInclusive="true"
+            />
+    </fragment>
 </navigation>
