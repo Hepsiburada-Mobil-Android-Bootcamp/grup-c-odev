@@ -18,9 +18,11 @@
 [View Model](https://developer.android.com/topic/libraries/architecture/viewmodel)  
 [Android Easy FireBase - Yasin Çetin](https://github.com/yasincetin002/AndroidEasyFirebase)
 
+## Onboard
+![Alt Text](https://media.giphy.com/media/tPCQ0wn4v0AfjLQotm/giphy.gif)
+
+
 ## Application
-![Alt Text](https://media.giphy.com/media/u211bQ6dUKND8utdTn/giphy.gif)
-
-
+![Alt Text](https://media.giphy.com/media/shbFIKK7yj6c0rPWwW/giphy.gif)
 
 
