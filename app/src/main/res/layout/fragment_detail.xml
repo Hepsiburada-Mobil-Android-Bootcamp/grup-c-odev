@@ -163,7 +163,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="/Gram"
+                    android:text="/Unit"
                     android:textSize="10sp"
                     android:textFontWeight="400"
                     android:textColor="@color/black"
