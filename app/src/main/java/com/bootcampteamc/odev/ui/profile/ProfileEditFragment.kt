@@ -6,11 +6,15 @@ import android.os.Bundle
 import android.util.Base64
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.graphics.drawable.toBitmap
+import androidx.navigation.fragment.findNavController
+import com.bootcampteamc.odev.R
 import com.bootcampteamc.odev.databinding.FragmentProfileEditBinding
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.firebase.firestore.FirebaseFirestore
 import java.io.ByteArrayOutputStream
 
@@ -23,7 +27,9 @@ class ProfileEditFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProfileEditBinding.inflate(inflater, container, false)
-
+        //baya kötü oldu ama ben yaptım -Çağrı
+        requireActivity().findViewById<MaterialToolbar>(R.id.toolbar).menu.findItem(R.id.searchFragment).isVisible=false
+        //üstü
         firestore = FirebaseFirestore.getInstance()
 
         // upload image
@@ -38,11 +44,11 @@ class ProfileEditFragment : Fragment() {
         binding.saveButton.setOnClickListener {
             saveProfileInfo()
             saveImage()
-          //  findNavController().navigate(R.id.profilePageFragment)
+           findNavController().navigate(R.id.profilePageFragment)
         }
         // Cancel editing profile
         binding.cancelButton.setOnClickListener {
-         //   findNavController().navigate(R.id.profilePageFragment)
+            findNavController().navigate(R.id.profilePageFragment)
         }
 
         return binding.root
@@ -62,6 +68,8 @@ class ProfileEditFragment : Fragment() {
         }
 
     }
+
+
 
     // save the written info
     private fun saveProfileInfo() {
@@ -83,4 +91,5 @@ class ProfileEditFragment : Fragment() {
             apply()
         }
     }
+
 }

@@ -40,7 +40,7 @@ class OnboardFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
 
         binding = FragmentOnboardBinding.inflate(inflater, container, false)
 
@@ -61,8 +61,16 @@ class OnboardFragment : Fragment() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         // start function
-
-        checkUser()
+        val firebaseUser = firebaseAuth.currentUser
+        if(firebaseUser != null && isOnboardingFinished()) {
+            val intent = Intent(requireContext(),MainActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
+            return null     //yani kötü bi çözüm ama kısmet artık
+        }
+        else if(isOnboardingFinished()){
+            findNavController().navigate(R.id.signUpFragment)
+        }
 
         // result launcher for google sign in
         val resultLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
@@ -106,15 +114,7 @@ class OnboardFragment : Fragment() {
     }
     // check if user already signed in with google
     private fun checkUser() {
-        val firebaseUser = firebaseAuth.currentUser
-        if(firebaseUser != null && isOnboardingFinished()) {
-           val intent = Intent(requireContext(),MainActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
-        }
-        else if(isOnboardingFinished()){
-            findNavController().navigate(R.id.signUpFragment)
-        }
+
     }
 
     // google sign with firebase

@@ -40,7 +40,7 @@
     <fragment
         android:id="@+id/profilePageFragment"
         android:name="com.bootcampteamc.odev.ui.profile.ProfilePageFragment"
-        android:label="ProfilePageFragment" >
+        android:label="Profile" >
         <action
             android:id="@+id/action_profilePageFragment_to_profileEditFragment"
             app:destination="@id/profileEditFragment" />
@@ -48,5 +48,5 @@
     <fragment
         android:id="@+id/profileEditFragment"
         android:name="com.bootcampteamc.odev.ui.profile.ProfileEditFragment"
-        android:label="ProfileEditFragment" />
+        android:label="Edit Profile" />
 </navigation>

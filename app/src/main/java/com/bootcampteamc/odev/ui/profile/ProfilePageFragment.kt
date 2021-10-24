@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.util.Base64
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.bootcampteamc.odev.R
 import com.bootcampteamc.odev.databinding.FragmentProfilePageBinding
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -22,7 +25,7 @@ class ProfilePageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProfilePageBinding.inflate(inflater, container, false)
-
+        requireActivity().findViewById<MaterialToolbar>(R.id.toolbar).menu.findItem(R.id.searchFragment).isVisible=false
         firebaseAuth = FirebaseAuth.getInstance()
 
         // to edit profile page
@@ -71,5 +74,10 @@ class ProfilePageFragment : Fragment() {
         binding.phoneNumber.text = phoneInfo
         binding.address.text = addressInfo
         binding.email.text = emailInfo
+    }
+
+    override fun onStop() {
+        super.onStop()
+        requireActivity().findViewById<MaterialToolbar>(R.id.toolbar).menu.findItem(R.id.searchFragment).isVisible=true
     }
 }
