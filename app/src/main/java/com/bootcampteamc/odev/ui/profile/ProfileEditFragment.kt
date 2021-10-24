@@ -22,6 +22,7 @@ import com.bootcampteamc.odev.databinding.FragmentProfileEditBinding
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.tasks.await
 import java.io.ByteArrayOutputStream
@@ -54,7 +55,7 @@ class ProfileEditFragment : Fragment() {
         // Save button for saving the info and image
         binding.saveButton.setOnClickListener {
             save()
-           findNavController().navigate(R.id.profilePageFragment)
+           findNavController().navigate(R.id.homeFragment)
         }
         // Cancel editing profile
         binding.cancelButton.setOnClickListener {
@@ -107,23 +108,35 @@ class ProfileEditFragment : Fragment() {
         val profile = ProfileData(
             uid = FirebaseAuth.getInstance().currentUser?.uid,
             name = binding.name.text.toString(),
-            phoneNumber = binding.phone.text.toString().toInt(),
-            email = binding.email.text.toString(),
+            phoneNumber = binding.phone.text.toString(),
             address = binding.address.text.toString(),
             imageAddress = imageAdress
         )
 
-        if (profile.name.isNullOrEmpty() || profile.phoneNumber.toString().isNullOrEmpty()
-            || profile.email.isNullOrEmpty() || profile.address.isNullOrEmpty()) {
-            Toast.makeText(requireContext(),"FILL IN THE BLANKS..", Toast.LENGTH_LONG).show()
-        } else {
-            firestore?.collection("profileInfo")?.add(profile)?.addOnSuccessListener {
-            Toast.makeText(requireContext(), "Successful", Toast.LENGTH_LONG).show()
+    profile.uid?.let {
+        firestore?.collection("profileInfo")?.document(it)?.set(profile)
+            ?.addOnSuccessListener {
+                Toast.makeText(requireContext(), "Successful", Toast.LENGTH_LONG).show()
+            }?.addOnFailureListener {
+                Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_LONG).show()
+            }
 
-        }?.addOnFailureListener {
-            Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_LONG).show()
+    }
+
+    if (profile.name.isNullOrEmpty() || profile.phoneNumber.toString().isNullOrEmpty()
+        || profile.address.isNullOrEmpty()) {
+        Toast.makeText(requireContext(),"FILL IN THE BLANKS..", Toast.LENGTH_LONG).show()
+    } else {
+        profile.uid?.let {
+            firestore?.collection("profileInfo")?.document(it)?.set(profile)
+                ?.addOnSuccessListener {
+                    Toast.makeText(requireContext(), "Successful", Toast.LENGTH_LONG).show()
+                }?.addOnFailureListener {
+                    Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_LONG).show()
+                }
+
         }
-        }
+    }
 
     }
     fun uploadImage(uri: Uri) : String{

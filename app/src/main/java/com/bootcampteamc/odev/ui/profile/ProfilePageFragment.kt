@@ -9,11 +9,16 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.bootcampteamc.odev.R
+import com.bootcampteamc.odev.data.ProfileData
 import com.bootcampteamc.odev.databinding.FragmentProfilePageBinding
+import com.bumptech.glide.Glide
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 
 
 class ProfilePageFragment : Fragment() {
@@ -64,16 +69,34 @@ class ProfilePageFragment : Fragment() {
 
     // to load the profile info written
     private fun loadProfileInfo() {
-        val sharedPrefer = context?.getSharedPreferences("sharedPrefer", Context.MODE_PRIVATE)
-        val nameInfo = sharedPrefer?.getString("nameInfo", binding.name.text.toString())
-        val phoneInfo = sharedPrefer?.getString("phoneInfo", binding.phoneNumber.text.toString())
-        val emailInfo = sharedPrefer?.getString("emailInfo", binding.email.text.toString())
-        val addressInfo = sharedPrefer?.getString("addressInfo", binding.address.text.toString())
 
-        binding.name.text = nameInfo
-        binding.phoneNumber.text = phoneInfo
-        binding.address.text = addressInfo
-        binding.email.text = emailInfo
+
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+        val firestore = FirebaseFirestore.getInstance()
+        uid?.let {
+            firestore.collection("profileInfo").document(it).get()
+                .addOnSuccessListener {
+                    val profil = it.toObject(ProfileData::class.java)
+                    binding.apply {
+                        name.text = profil?.name.orEmpty()
+                        phoneNumber.text =profil?.phoneNumber.orEmpty()
+                        address.text = profil?.address.orEmpty()
+                        email.text = firebaseAuth.currentUser?.email.orEmpty()
+                        val ref = FirebaseStorage.getInstance().reference.child(profil?.imageAddress.toString())
+                        ref.downloadUrl.addOnSuccessListener {
+                            Glide.with(binding.root.context).load(it).centerCrop().into(binding.profileImage)
+                        }
+
+                    }
+                    Toast.makeText(requireContext(), "Successful", Toast.LENGTH_LONG).show()
+                }.addOnFailureListener {
+                    Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_LONG).show()
+                }
+
+        }
+
+
+
     }
 
     override fun onStop() {

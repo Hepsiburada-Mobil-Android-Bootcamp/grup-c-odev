@@ -41,17 +41,18 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:layout_width="@dimen/_70sdp"
             android:layout_height="@dimen/_50sdp" />
+
         <TextView
             android:id="@+id/updateProfile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_70sdp"
             android:text="@string/update_your_profile"
-            android:textSize="@dimen/_20sdp"
             android:textColor="#81AA66"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:layout_height="wrap_content" />
+            android:textSize="@dimen/_20sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
 
@@ -90,73 +91,58 @@
             android:layout_height="wrap_content" />
 
         <EditText
-            android:padding="@dimen/_10sdp"
-            android:paddingStart="@dimen/_15sdp"
-            android:id="@+id/email"
-            android:background="@drawable/profile_back"
-            android:hint="@string/e_mail_2"
-            android:textSize="@dimen/_14sdp"
-            app:layout_constraintTop_toBottomOf="@+id/phone"
-            android:layout_marginStart="@dimen/_30sdp"
-            android:layout_marginEnd="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="match_parent"
-            android:gravity="center_vertical"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:padding="@dimen/_10sdp"
-            android:paddingStart="@dimen/_15sdp"
             android:id="@+id/address"
-            android:background="@drawable/profile_back"
-            android:hint="@string/address_2"
-            android:textSize="@dimen/_14sdp"
-            app:layout_constraintTop_toBottomOf="@+id/email"
-            android:layout_marginStart="@dimen/_30sdp"
-            android:layout_marginEnd="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:background="@drawable/profile_back"
             android:gravity="center_vertical"
+            android:hint="@string/address_2"
             android:minHeight="@dimen/_80sdp"
-            android:layout_height="wrap_content" />
+            android:padding="@dimen/_10sdp"
+            android:paddingStart="@dimen/_15sdp"
+            android:textSize="@dimen/_14sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phone" />
 
         <TextView
             android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:background="@drawable/button_background"
             android:clickable="true"
             android:focusable="true"
-            app:layout_constraintStart_toEndOf="@+id/cancelButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/address"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:layout_width="wrap_content"
-            android:background="@drawable/button_background"
+            android:gravity="center"
             android:text="@string/save"
-            android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="@dimen/_14sdp"
-            android:gravity="center"
-            android:layout_height="wrap_content" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cancelButton"
+            app:layout_constraintTop_toBottomOf="@+id/address" />
 
         <TextView
             android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:background="@drawable/button_background"
             android:clickable="true"
             android:focusable="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/saveButton"
-            app:layout_constraintTop_toBottomOf="@+id/address"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:layout_width="wrap_content"
-            android:background="@drawable/button_background"
+            android:gravity="center"
             android:text="@string/cancel"
-            android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="@dimen/_14sdp"
-            android:gravity="center"
-            android:layout_height="wrap_content" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/saveButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/address" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

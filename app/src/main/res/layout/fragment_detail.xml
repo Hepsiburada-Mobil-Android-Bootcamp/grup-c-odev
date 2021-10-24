@@ -16,7 +16,6 @@
             android:background="#F9F9F9"
             >
 
-
             <ImageView
                 android:layout_marginTop="@dimen/_20sdp"
                 android:id="@+id/image_view"

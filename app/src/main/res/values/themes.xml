@@ -31,6 +31,7 @@
     </style>
 
     <style name="Theme.MyApplication.NoActionBar.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -44,6 +45,12 @@
         <item name="android:textAllCaps">false</item>
         <item name="textAllCaps">false</item>
         <item name="fontFamily">@font/dm_sans_bold</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">true</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 
 </resources>
