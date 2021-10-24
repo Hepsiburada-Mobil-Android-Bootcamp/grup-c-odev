@@ -50,7 +50,10 @@ class ProductAdapter(query: Query, private val parentFragmentManager: FragmentMa
                     }
                 }
                 appCompatImageButton.setOnClickListener {
+                    product.id?.let {
+                            id -> itemClickListener(id)
 
+                    }
                 }
             }
         }

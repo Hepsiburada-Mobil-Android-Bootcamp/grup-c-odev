@@ -50,7 +50,7 @@
     <string name="field_is_required"> This field is required</string>
     <string name="field_is_too_short"> Text length is too short</string>
     <string name="description">Description</string>
-    <string name="price_gram">Price / Gram</string>
+    <string name="price_gram">Price / Unit</string>
     <string name="thc_rate">THC rate</string>
     <string name="cbd_rate">CBD rate</string>
     <string name="add">Add</string>
