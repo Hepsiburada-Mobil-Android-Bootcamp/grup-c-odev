@@ -50,6 +50,13 @@
     <string name="extracts">Extracts</string>
     <string name="edibles">Edibles</string>
     <string name="accessories">Accessories</string>
+    <string name="not_valid_email">not valid</string>
+    <string name="capital_letter">Password must include at least one capital letter</string>
+    <string name="small_letter">Password must include at least one small letter</string>
+    <string name="number">Password must include at least one number</string>
+    <string name="special">Password must include at least one special character</string>
+    <string name="password_too_short">Password is too short</string>
+    <string name="password_is_required">Password is required</string>
 
     <string-array name="Categories">
         <item>Flowers</item>
@@ -58,5 +65,7 @@
         <item>Edibles</item>
         <item>Accessories</item>
     </string-array>
+
+
 
 </resources>
