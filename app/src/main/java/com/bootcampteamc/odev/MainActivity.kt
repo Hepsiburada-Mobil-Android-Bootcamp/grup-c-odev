@@ -58,9 +58,6 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(this, "Photo Updated", Toast.LENGTH_SHORT).show()
                         Glide.with(this).load(it).centerCrop().into(imageView)
                     }
-                        .addOnFailureListener {
-                            Toast.makeText(this, it.localizedMessage.toString(), Toast.LENGTH_SHORT).show()
-                        }
                 }, 1000)
             }
         }
