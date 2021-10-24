@@ -34,9 +34,6 @@ class OnboardFragment : Fragment() {
     private companion object {
         private const val TAG = "GOOGLE_SIGN_IN_TAG"
     }
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -66,12 +63,11 @@ class OnboardFragment : Fragment() {
             val intent = Intent(requireContext(),MainActivity::class.java)
             startActivity(intent)
             requireActivity().finish()
-            return null     //yani kötü bi çözüm ama kısmet artık
+            return null
         }
         else if(isOnboardingFinished()){
             findNavController().navigate(R.id.signUpFragment)
         }
-
         // result launcher for google sign in
         val resultLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
@@ -92,29 +88,21 @@ class OnboardFragment : Fragment() {
         binding.ibGoogle.setOnClickListener {
             Log.d(TAG, "onCreate: begin Google SignIn")
             resultLauncher.launch(Intent(googleSignInClient.signInIntent))
+            onBoardingFinished()
         }
-
-
         //login and sign in buttons
-
         binding.bLogin.setOnClickListener {
             val action = OnboardFragmentDirections.actionOnboardFragmentToSignInFragment()
             findNavController().navigate(action)
             onBoardingFinished()
         }
-
         binding.bJoin.setOnClickListener {
             val action = OnboardFragmentDirections.actionOnboardFragmentToSignUpFragment()
             onBoardingFinished()
             findNavController().navigate(action)
 
         }
-
         return binding.root
-    }
-    // check if user already signed in with google
-    private fun checkUser() {
-
     }
 
     // google sign with firebase
@@ -152,16 +140,12 @@ class OnboardFragment : Fragment() {
                 Toast.makeText(context, "Login Failed due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
-
-
     private fun onBoardingFinished() {
         val sharedPref = requireActivity().getSharedPreferences("onboarding", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.putBoolean("finished", true)
         editor.apply()
     }
-
-
     private fun isOnboardingFinished(): Boolean {
         //To set up a shared preferences structure and check for Onboarding to show once after running
         val sharedPref = requireActivity().getSharedPreferences("onboarding", Context.MODE_PRIVATE)

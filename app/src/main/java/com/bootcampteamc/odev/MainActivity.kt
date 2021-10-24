@@ -55,21 +55,15 @@ class MainActivity : AppCompatActivity() {
 
                 Handler(Looper.getMainLooper()).postDelayed({
                     ref.downloadUrl.addOnSuccessListener {
-                        Toast.makeText(this, "Photo değişti", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Photo Updated", Toast.LENGTH_SHORT).show()
                         Glide.with(this).load(it).centerCrop().into(imageView)
                     }
                         .addOnFailureListener {
                             Toast.makeText(this, it.localizedMessage.toString(), Toast.LENGTH_SHORT).show()
                         }
                 }, 1000)
-
-
             }
-
-
-
         }
-
 
         val navHeaderTextView = header.findViewById<TextView>(R.id.textview_email)
         NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout)
@@ -92,7 +86,6 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -103,13 +96,11 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         if(item.itemId == R.id.logOut){
-            Log.d("test","test")
             return true
         }
         else{
             return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
         }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
