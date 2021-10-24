@@ -9,6 +9,7 @@ import com.yasincetin.firebasesdk.firestore.FirestoreAdapter
 
 class SearchProductAdapter(query: Query) :
     FirestoreAdapter<ProductAdapter.ProductHolder, Product>(query) {
+    var itemClickListener: (String) -> Unit = {}
     override fun getModelClass() = Product::class.java
     override fun onBindViewHolder(holder: ProductAdapter.ProductHolder, position: Int) {
         getItem(position)?.let { holder.bind(it) }
@@ -17,7 +18,7 @@ class SearchProductAdapter(query: Query) :
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): ProductAdapter.ProductHolder {
 
         val binding = ItemProductBinding.inflate(
@@ -25,6 +26,6 @@ class SearchProductAdapter(query: Query) :
             false
         )
 
-        return ProductAdapter.ProductHolder(binding, null) { }
+        return ProductAdapter.ProductHolder(binding, null,itemClickListener )
     }
 }

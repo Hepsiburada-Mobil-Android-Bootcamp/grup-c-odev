@@ -43,7 +43,11 @@ class ProductAdapter(query: Query, private val parentFragmentManager: FragmentMa
                     Glide.with(binding.root.context).load(it).centerCrop().into(binding.productImage)
                 }
                 binding.root.setOnClickListener {
-                    product.id?.let { id -> itemClickListener(id) }
+
+                    product.id?.let {
+                            id -> itemClickListener(id)
+
+                    }
                 }
                 appCompatImageButton.setOnClickListener {
 
