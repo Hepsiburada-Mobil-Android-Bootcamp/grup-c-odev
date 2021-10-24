@@ -25,7 +25,8 @@ fun bindImage(imgView: ImageView, imgUrl: Uri?) {
         Glide.with(imgView.context)
             .load(imgUrl)
             .apply(
-                RequestOptions())
+                RequestOptions()
+                    .error(R.drawable.testimage))
             .into(imgView)
     }
 }
