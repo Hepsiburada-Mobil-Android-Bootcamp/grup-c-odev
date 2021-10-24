@@ -1,6 +1,7 @@
 package com.bootcampteamc.odev.ui.login
 
 import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LiveData
@@ -27,10 +28,10 @@ class SignViewModel {
 
         if(isEmailValid() && isPasswordValid()){
             auth.createUserWithEmailAndPassword(email.value.orEmpty(), password.value.orEmpty())
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) { //sign up succesful
+                .addOnSuccessListener { task ->
                         _signSuccesful.value = true
-                    }
+                }.addOnFailureListener{
+                    Log.d("test",it.toString())
                 }
         }
     }
