@@ -31,8 +31,8 @@ class SignUpFragment : Fragment() {
     ): View {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
-        viewModel.signSuccesful.observe(viewLifecycleOwner,{
-            if(it){
+        viewModel.signSuccesful.observe(viewLifecycleOwner, {
+            if (it) {
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
                 activity?.finish()
@@ -46,12 +46,18 @@ class SignUpFragment : Fragment() {
 
         val str = "Already a member? Log in"
         val spannableString = SpannableString(str) //adding clickable textview
-        val clickableSpanLogin: ClickableSpan = object : ClickableSpan() { //adding onClick function to textview
-            override fun onClick(p0: View) {
-                findNavController().navigate(R.id.signInFragment)
+        val clickableSpanLogin: ClickableSpan =
+            object : ClickableSpan() { //adding onClick function to textview
+                override fun onClick(p0: View) {
+                    findNavController().navigate(R.id.signInFragment)
+                }
             }
-        }
-        spannableString.setSpan(clickableSpanLogin, 18, 24, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE) //defining the clickable word of the textview
+        spannableString.setSpan(
+            clickableSpanLogin,
+            18,
+            24,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        ) //defining the clickable word of the textview
         binding.textViewClickable.setText(spannableString, TextView.BufferType.SPANNABLE)
         binding.textViewClickable.movementMethod = LinkMovementMethod.getInstance()
         binding.textViewTerms.movementMethod = LinkMovementMethod.getInstance()
